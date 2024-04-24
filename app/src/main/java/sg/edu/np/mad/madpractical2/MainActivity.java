@@ -8,6 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 
@@ -35,6 +36,27 @@ public class MainActivity extends AppCompatActivity {
         // Set the TextViews with the user's name, description and default button message
         tvName.setText(user.name);
         tvDesc.setText(user.description);
-        btnFollow.setText("Follow");
+
+        if (user.followed) {
+            btnFollow.setText("Unfollow");
+        }
+        else {
+            btnFollow.setText("Follow");
+        }
+
+        // Set event listener for follow button
+        btnFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (user.followed) {
+                    user.followed = false;
+                    btnFollow.setText("Follow");
+                }
+                else {
+                    user.followed = true;
+                    btnFollow.setText("Unfollow");
+                }
+            }
+        });
     }
 }
