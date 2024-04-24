@@ -8,6 +8,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import android.widget.TextView;
+import android.widget.Button;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -20,5 +23,18 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        // Initialize a new User object
+        User user = new User("John Doe", "MAD Developer", 1, false);
+
+        // Get the TextViews and Button from the layout
+        TextView tvName = findViewById(R.id.tvName);
+        TextView tvDesc = findViewById(R.id.tvDesc);
+        Button btnFollow = findViewById(R.id.btnFollow);
+
+        // Set the TextViews with the user's name, description and default button message
+        tvName.setText(user.name);
+        tvDesc.setText(user.description);
+        btnFollow.setText("Follow");
     }
 }
